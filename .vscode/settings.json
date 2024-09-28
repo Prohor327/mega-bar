@@ -1,8 +1,0 @@
-{
-    "files.associations": {
-        "cstdlib": "cpp",
-        "xdg-shell-client-protocol.h": "c",
-        "unistd.h": "c",
-        "mman.h": "c"
-    }
-}

@@ -5,7 +5,8 @@ workspace "megabar"
     architecture "x64"
     location "build"
     toolset "Clang"
-    include "vendor/glad"
+    include "vendor/glad/glad.lua"
+    include "vendor/imgui.lua"
 
 project "megabar"
     language "C++"
@@ -15,7 +16,8 @@ project "megabar"
     includedirs
     {
         "vendor/glad/include/glad",
-        "vendor/glad/include/KHR"
+        "vendor/imgui",
+        "vendor/imgui/backends"
     }
 
     files
@@ -23,7 +25,7 @@ project "megabar"
         "src/*.cpp"
     } 
 
-    links { "glfw", "glad", "GL" }
+    links { "glfw", "glad", "GL", "imgui" }
 
     filter "configurations:Debug"
         kind "ConsoleApp"
