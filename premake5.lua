@@ -5,33 +5,24 @@ workspace "megabar"
     architecture "x64"
     location "build"
     toolset "Clang"
-    include "vendor/glad/glad.lua"
-    include "vendor/imgui.lua"
 
 project "megabar"
     language "C++"
     cppdialect "C++20"
     toolset "Clang"
 
-    includedirs
-    {
-        "vendor/glad/include/glad",
-        "vendor/imgui",
-        "vendor/imgui/backends"
-    }
-
     files
     {
-        "src/*.cpp"
+        "src/*.cpp",
     } 
 
-    links { "glfw", "glad", "GL", "imgui" }
+    build { "`pkg-config --cflags gtk+-3.0 pkg-config --libs gtk+-3.0`"}
 
     filter "configurations:Debug"
         kind "ConsoleApp"
         runtime "Debug"
-        defines { "DEBUG" }
         symbols "On"
+        linkoptions { "-fuse-ld=lld -g -Wl" }
         targetdir "build/Debug/bin"
         objdir  "build/Debug/obj"
 
