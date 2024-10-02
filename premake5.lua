@@ -9,14 +9,27 @@ workspace "megabar"
 project "megabar"
     language "C++"
     cppdialect "C++20"
-    toolset "Clang"
+
 
     files
     {
         "src/*.cpp",
     } 
 
-    build { "`pkg-config --cflags gtk+-3.0 pkg-config --libs gtk+-3.0`"}
+    includedirs
+    {
+        "/usr/include"
+    }
+
+    linkoptions
+    {
+        "`pkg-config --libs gtkmm-3.0` -fuse-ld=lld -g -Wl"
+    }
+
+    buildoptions
+    {
+        "`pkg-config --cflags gtkmm-3.0`"
+    }
 
     filter "configurations:Debug"
         kind "ConsoleApp"
