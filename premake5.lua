@@ -23,19 +23,18 @@ project "megabar"
 
     linkoptions
     {
-        "`pkg-config --libs gtkmm-3.0` -fuse-ld=lld -g -Wl"
+        "`pkg-config --libs gtk+-3.0`"
     }
 
     buildoptions
     {
-        "`pkg-config --cflags gtkmm-3.0`"
+        "`pkg-config --cflags gtk+-3.0`"
     }
 
     filter "configurations:Debug"
         kind "ConsoleApp"
         runtime "Debug"
         symbols "On"
-        linkoptions { "-fuse-ld=lld -g -Wl" }
         targetdir "build/Debug/bin"
         objdir  "build/Debug/obj"
 
